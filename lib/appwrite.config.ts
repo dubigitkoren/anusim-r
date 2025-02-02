@@ -1,7 +1,7 @@
 import * as sdk from 'node-appwrite';
 
 export const {
-    PROJECT_ID, API_KEY, DATABASE_ID, SPAIN_COLLECTION_ID, NEXT_PUBLIC_ENDPOINT
+    PROJECT_ID, API_KEY, DATABASE_ID, SPAIN_COLLECTION_ID, TBL_SPAIN_COLLECTION_ID, NEXT_PUBLIC_ENDPOINT, 
 } = process.env;
 
 const client = new sdk.Client();
