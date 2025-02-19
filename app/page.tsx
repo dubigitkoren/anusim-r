@@ -6,23 +6,12 @@ import List from "./components/list";
 import TableLoader from "./components/TableLoader";
 
 export default function Page() {
-    let value = localStorage.getItem("spainRecords") || '';
     const { Data, setData } = useSpainStore((state) => state);
     const [searchTxt, setSearchTxt] = useState('');
     const [spainData, setSpainData] = useState<CreateTblSpainParam[]>([]);
 
     const getd = async () => {
-        let d: CreateTblSpainParam[];
-        if (value !== '') {
-            d = JSON.parse(value);
-            console.log('from storage');
-        }
-        else {
-            console.log('before');
-            d = await allSpainRecords();
-            console.log('after');
-            window.localStorage.setItem('spainRecords', JSON.stringify(d));
-        }
+        const d = await allSpainRecords();
         setData(d);
         setSpainData(d);
     }
