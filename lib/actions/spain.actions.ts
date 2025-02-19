@@ -1,12 +1,12 @@
 "use server";
 import { ID, Query } from "node-appwrite";
-import { DATABASE_ID, databases, SPAIN_COLLECTION_ID, TBL_SPAIN_COLLECTION_ID } from "../appwrite.config";
+import { DATABASE_ID, databases, SPAIN_COLLECTION_ID, TBL_SPAIN_COLLECTION_ID, API_URL } from "../appwrite.config";
 import { parseStringify } from "../utils";
 
 import useSpainStore from "../store/useSpainStore";
 
 export const getSpainRecords = async () => {
-    try {       
+    try {
 
         const page1 = await databases.listDocuments(
             DATABASE_ID!,
@@ -26,11 +26,11 @@ export const getSpainRecords = async () => {
 export async function allSpainRecords() {
     //const {  setData } = useSpainStore((state) => state);
 
-    const response = await fetch('https://anusimapi.runasp.net/spain', {
+    const response = await fetch(API_URL!, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
-        },        
+        },
     });
 
     const data = await response.json() as TblSpainData;
@@ -38,7 +38,7 @@ export async function allSpainRecords() {
     return data.Data;
 }
 
-export const createTblSpainRecord = async ( tblSpainParam: CreateTblSpainParam) => {
+export const createTblSpainRecord = async (tblSpainParam: CreateTblSpainParam) => {
     try {
         const newDocument = await databases.createDocument(
             DATABASE_ID!,

@@ -2,33 +2,21 @@ import { allSpainRecords } from "@/lib/actions/spain.actions"
 import useSpainStore from "../../lib/store/useSpainStore"
 import { useEffect, useState } from "react";
 
+interface Props { 
+    spainRows: CreateTblSpainParam[]; 
+  }
 
-export default function List() {
-    const { Data, setData } = useSpainStore((state) => state);
-    const [loading, setLoading] = useState<boolean>(true);
-
-
-    const getd = async () => {
-        const d = await allSpainRecords();
-        setLoading(false);
-        setData(d);
-    }
-
-    useEffect(() => {
-        const d = getd();
-
-    }, []);
-
-    const data = Data;
+export default function List({spainRows}:Props) {   
 
     return (
         <>
-            {loading ? (
+            {/* {loading ? (
                 <div className="loading">Loading...</div>
-            ) : (
+            ) : ( */}
                 <table className="myTable">
                     <tbody>
                         <tr>
+                            <th className="wide1">ID</th>
                             <th className="wide1">Date Of Auto</th>
                             <th className="wide2">Tribunal</th>
                             <th className="wide3">Type Of Auto</th>
@@ -49,8 +37,9 @@ export default function List() {
                             <th className="wide18">Bishopric Of Residence</th>
                             <th className="wide19">Punishment</th>
                         </tr>
-                        {data.map((row) => (
+                        {spainRows.map((row) => (
                             <tr key={row.ID}>
+                                <td>{row.ID}</td>
                                 <td>{row.DateOfAuto.toString()}</td>
                                 <td>{row.Tribunal}</td>
                                 <td>{row.TypeOfAuto}</td>
@@ -74,7 +63,7 @@ export default function List() {
                         ))}
                     </tbody>
                 </table>
-            )}
+            {/* )} */}
             <style jsx>{`
             h1{
                 color:purple;
@@ -98,7 +87,7 @@ export default function List() {
             th {
                 border: 1px solid #ddd;
                 padding: 8px;
-                background: white;
+                background-color: rgb(220 252 231 / var(--tw-bg-opacity, 1));
                 position: sticky;
                 top: 0; /* Don't forget this, required for the stickiness */
                 box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4)
