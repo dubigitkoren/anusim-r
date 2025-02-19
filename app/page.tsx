@@ -63,7 +63,7 @@ export default function Page() {
 
     return (
         <>
-            <div className="container">
+            <div className="contain">
                 <div className="">
                     <h1>Spain Data</h1>
                     <span className="font-mono text-lg font-extrabold text-purple-600">{spainData.length} Records</span>
@@ -80,7 +80,7 @@ export default function Page() {
             </div>
 
             <style jsx>{`
-             .container {
+             .contain {
               margin: 50px;
             }
             h1{
