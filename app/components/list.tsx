@@ -2,67 +2,67 @@ import { allSpainRecords } from "@/lib/actions/spain.actions"
 import useSpainStore from "../../lib/store/useSpainStore"
 import { useEffect, useState } from "react";
 
-interface Props { 
-    spainRows: CreateTblSpainParam[]; 
-  }
+interface Props {
+    spainRows: CreateTblSpainParam[];
+}
 
-export default function List({spainRows}:Props) {   
+export default function List({ spainRows }: Props) {
 
     return (
         <>
             {/* {loading ? (
                 <div className="loading">Loading...</div>
             ) : ( */}
-                <table className="myTable">
-                    <tbody>
-                        <tr>
-                            <th className="wide1">ID</th>
-                            <th className="wide1">Date Of Auto</th>
-                            <th className="wide2">Tribunal</th>
-                            <th className="wide3">Type Of Auto</th>
-                            <th className="wide4">Name</th>
-                            <th className="wide5">Aliases</th>
-                            <th className="wide6">Sex</th>
-                            <th className="wide7">Personal Status</th>
-                            <th className="wide8">Occupation</th>
-                            <th className="wide9">Family Ties</th>
-                            <th className="wide10">Location Of Birth</th>
-                            <th className="wide11">Residence</th>
-                            <th className="wide12">Type Of Crime</th>
-                            <th className="wide13">Sentence</th>
-                            <th className="wide14">Additional Information</th>
-                            <th className="wide15">Age</th>
-                            <th className="wide16">Surname</th>
-                            <th className="wide17">Bishopric Of Birth</th>
-                            <th className="wide18">Bishopric Of Residence</th>
-                            <th className="wide19">Punishment</th>
+            <table className="myTable">
+                <tbody>
+                    <tr>
+                        <th className="wide1">ID</th>
+                        <th className="wide1">Date Of Auto</th>
+                        <th className="wide2">Tribunal</th>
+                        <th className="wide3">Type Of Auto</th>
+                        <th className="wide4">Name</th>
+                        <th className="wide16">Surname</th>
+                        <th className="wide5">Aliases</th>
+                        <th className="wide10">Location Of Birth</th>
+                        <th className="wide17">Bishopric Of Birth</th>
+                        <th className="wide11">Residence</th>
+                        <th className="wide18">Bishopric Of Residence</th>
+                        <th className="wide6">Sex</th>
+                        <th className="wide15">Age</th>
+                        <th className="wide7">Personal Status</th>
+                        <th className="wide8">Occupation</th>
+                        <th className="wide9">Family Ties</th>
+                        <th className="wide12">Type Of Crime</th>
+                        <th className="wide13">Sentence</th>
+                        <th className="wide19">Punishment</th>
+                        <th className="wide14">Additional Information</th>
+                    </tr>
+                    {spainRows.map((row) => (
+                        <tr key={row.ID}>
+                            <td>{row.ID}</td>
+                            <td>{row.DateOfAuto.toString()}</td>
+                            <td>{row.Tribunal}</td>
+                            <td>{row.TypeOfAuto}</td>
+                            <td>{row.Name}</td>
+                            <td>{row.Surname}</td>
+                            <td>{row.Aliases}</td>
+                            <td>{row.LocationOfBirth}</td>
+                            <td>{row.BishopricOfBirth}</td>
+                            <td>{row.Residence}</td>
+                            <td>{row.BishopricOfResidence}</td>
+                            <td>{row.Sex}</td>
+                            <td>{row.Age}</td>
+                            <td>{row.PersonalStatus}</td>
+                            <td>{row.Occupation}</td>
+                            <td>{row.FamilyTies}</td>
+                            <td>{row.TypeOfCrime}</td>
+                            <td>{row.Sentence}</td>
+                            <td>{row.Punishment}</td>
+                            <td>{row.AdditionalInformation}</td>
                         </tr>
-                        {spainRows.map((row) => (
-                            <tr key={row.ID}>
-                                <td>{row.ID}</td>
-                                <td>{row.DateOfAuto.toString()}</td>
-                                <td>{row.Tribunal}</td>
-                                <td>{row.TypeOfAuto}</td>
-                                <td>{row.Name}</td>
-                                <td>{row.Aliases}</td>
-                                <td>{row.Sex}</td>
-                                <td>{row.PersonalStatus}</td>
-                                <td>{row.Occupation}</td>
-                                <td>{row.FamilyTies}</td>
-                                <td>{row.LocationOfBirth}</td>
-                                <td>{row.Residence}</td>
-                                <td>{row.TypeOfCrime}</td>
-                                <td>{row.Sentence}</td>
-                                <td>{row.AdditionalInformation}</td>
-                                <td>{row.Age}</td>
-                                <td>{row.Surname}</td>
-                                <td>{row.BishopricOfBirth}</td>
-                                <td>{row.BishopricOfResidence}</td>
-                                <td>{row.Punishment}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                    ))}
+                </tbody>
+            </table>
             {/* )} */}
             <style jsx>{`
             h1{
