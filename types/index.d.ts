@@ -1,9 +1,3 @@
-declare interface CreateSpainParam{
-    name:string;
-    age:number;
-    birth:Date;
-}
-
 declare interface CreateTblSpainParam{
     ID: number;
     DateOfAuto:Date;

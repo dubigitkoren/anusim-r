@@ -24,18 +24,33 @@ export const getSpainRecords = async () => {
 };
 
 export async function allSpainRecords() {
-    //const {  setData } = useSpainStore((state) => state);
 
     const response = await fetch(API_URL!, {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'rejectUnauthorized': 'false'
         },
     });
 
     const data = await response.json() as TblSpainData;
-    //setData(data.Data);
+
     return data.Data;
+}
+
+export async function updateSpainRecord(updatedRow: CreateTblSpainParam) {
+
+    const response = await fetch(API_URL! + '/' + updatedRow.ID, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updatedRow),
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to update the record ' +  response.url +' '+response.statusText);
+    }
 }
 
 export const createTblSpainRecord = async (tblSpainParam: CreateTblSpainParam) => {
