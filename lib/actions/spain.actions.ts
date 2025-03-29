@@ -40,8 +40,8 @@ export async function allSpainRecords() {
 
 export async function updateSpainRecord(updatedRow: CreateTblSpainParam) {
 
-    const response = await fetch(API_URL! + '/' + updatedRow.ID, {
-        method: 'PUT',
+    const response = await fetch(API_URL! , {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -49,7 +49,7 @@ export async function updateSpainRecord(updatedRow: CreateTblSpainParam) {
     });
 
     if (!response.ok) {
-        throw new Error('Failed to update the record ' +  response.url +' '+response.statusText);
+        throw new Error('Failed to update the record ' + response.url + ' ' + response.statusText);
     }
 }
 
